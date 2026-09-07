@@ -82,7 +82,37 @@ a, button, input, textarea, select, [role='button'] {
   .faculty-grid { grid-template-columns: minmax(0, 300px) !important; }
   .footer-grid { grid-template-columns: 1fr !important; }
   .footer-right { align-items: flex-start !important; }
-  .event-card-grid { grid-template-columns: 1fr !important; }
+  /* Disable the pinned scroll-jacking carousel on mobile so cards
+     flow naturally and posters are never clipped by a fixed-height box. */
+  .events-section { height: auto !important; }
+  .events-sticky { position: static !important; height: auto !important; overflow: visible !important; }
+  .events-carousel-outer { flex: none !important; overflow: visible !important; display: block !important; }
+  .events-carousel-inner { overflow: visible !important; }
+  .events-carousel-track { display: block !important; transform: none !important; }
+  .events-scroll-hint { display: none !important; }
+  .events-timeline { display: none !important; }
+
+  .event-card-grid {
+    grid-template-columns: 1fr !important;
+    flex-basis: auto !important;
+    width: 100% !important;
+    min-height: 0 !important;
+    margin-bottom: 24px !important;
+  }
+
+  .event-image-frame {
+    aspect-ratio: auto !important;
+    padding: 0 !important;
+    background: #05050a !important;
+  }
+
+  .event-poster-image {
+    width: 100% !important;
+    height: auto !important;
+    max-height: none !important;
+    object-fit: contain !important;
+  }
+
   .stats-grid { grid-template-columns: 1fr 1fr !important; }
   .global-rocket { display: none !important; }
 }

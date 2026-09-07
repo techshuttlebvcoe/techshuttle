@@ -81,9 +81,9 @@ interface EventItem { id: number; name: string; description: string; date: strin
 interface Member { id: number; name: string; role: string; image: string }
 
 const EVENTS: EventItem[] = [
-  { id: 1, name: 'Degub and Dare', description: 'A fun-filled coding competition featuring C++ and Python, with MCQs, output-based questions, debugging, and OOPs concepts. Participants who couldn’t qualify for the next round had to complete entertaining dares, making the event a perfect mix of coding, challenge, and fun.', date: 'Feb 2026', image: degubanddare },
+  { id: 1, name: 'Debug and Dare', description: 'A fun-filled coding competition featuring C++ and Python, with MCQs, output-based questions, debugging, and OOPs concepts. Participants who couldn’t qualify for the next round had to complete entertaining dares, making the event a perfect mix of coding, challenge, and fun.', date: 'Feb 2026', image: degubanddare },
   { id: 2, name: 'Codesprit:Py Launch', description: 'An engaging online workshop introducing students to essential Python libraries for data analysis and visualization, including NumPy, Pandas, Matplotlib, and Seaborn. The session provided hands-on learning and practical insights into working with data using Python.', date: 'Nov 2025', image: pylaunch },
-  { id: 3, name: 'Tech Balliye', description: 'Tech Baliye was a unique techno-cultural event blending technology, dance, creativity, and teamwork. Organized by TechShuttle × BVPCSI × Aura, it featured tech quizzes, online challenges, buzzer battles, and creative performances, encouraging participants to showcase their technical knowledge, spontaneity, collaboration, and innovative spirit.', date: 'Oct 2025', image: techballiye },
+  { id: 3, name: 'Tech Baliye', description: 'Tech Baliye was a unique techno-cultural event blending technology, dance, creativity, and teamwork. Organized by TechShuttle × BVPCSI × Aura, it featured tech quizzes, online challenges, buzzer battles, and creative performances, encouraging participants to showcase their technical knowledge, spontaneity, collaboration, and innovative spirit.', date: 'Oct 2025', image: techballiye },
 ]
 
 const FACULTY_HEAD: Member = {
@@ -101,10 +101,10 @@ const CORE_TEAM: Member[] = [
 ]
 
 const DEPT_HEADS: Member[] = [
-  { id: 5, name: 'Akshat Verma', role: 'Technical Head', image: akshat },
-  { id: 6, name: 'Archit Singh', role: 'Technical Head', image: archit },
+  { id: 5, name: 'Archit Singh', role: 'Technical Head', image: archit },
+  { id: 6, name: 'Akshat Verma', role: 'Technical Head', image: akshat },
   { id: 7, name: 'Dhruv Sharma', role: 'Social Media Head', image: dhruv },
-  { id: 8, name: 'Vanshnavi Vashishta', role: 'Content & Documentation Head', image: vaishnavi },
+  { id: 8, name: 'Vaishnavi Vashisth', role: 'Content & Documentation Head', image: vaishnavi },
   { id: 9, name: 'Deepika', role: 'Content & Documentation Head', image: deepika },
   { id: 10, name: 'Prabhav Sharma', role: 'Design Head', image: prabhav },
 ]
@@ -551,9 +551,9 @@ function EventsSection() {
   }, [])
 
   return (
-    <section ref={sectionRef} id="events"
+    <section ref={sectionRef} id="events" className="events-section"
       style={{ height: `${100 + (EVENTS.length - 1) * 100}vh`, position: 'relative' }}>
-      <div style={{ position: 'sticky', top: 0, height: '100vh', backgroundColor: '#07070f', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
+      <div className="events-sticky" style={{ position: 'sticky', top: 0, height: '100vh', backgroundColor: '#07070f', display: 'flex', flexDirection: 'column', overflow: 'hidden' }}>
 
         {/* Heading */}
         <div style={{ maxWidth: 1200, margin: '0 auto', padding: '72px 24px 20px', width: '100%', flexShrink: 0 }}>
@@ -562,22 +562,22 @@ function EventsSection() {
             <h2 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(36px, 5vw, 60px)', fontWeight: 900, color: '#ffffff', lineHeight: 1.02, letterSpacing: '-0.01em', margin: 0 }}>
               Past Events
             </h2>
-            <span style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, color: 'rgba(240,240,245,0.3)', letterSpacing: '0.2em' }}>
+            <span className="events-scroll-hint" style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 12, color: 'rgba(240,240,245,0.3)', letterSpacing: '0.2em' }}>
               SCROLL TO NAVIGATE ↓↑
             </span>
           </div>
         </div>
 
         {/* Carousel — overflow:hidden clips the sliding track */}
-        <div style={{ flex: 1, overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
-          <div style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%', overflow: 'hidden' }}>
-            <div ref={carouselRef} style={{ display: 'flex', gap: 24, willChange: 'transform' }}>
+        <div className="events-carousel-outer" style={{ flex: 1, overflow: 'hidden', display: 'flex', alignItems: 'center' }}>
+          <div className="events-carousel-inner" style={{ maxWidth: 1200, margin: '0 auto', padding: '0 24px', width: '100%', overflow: 'hidden' }}>
+            <div ref={carouselRef} className="events-carousel-track" style={{ display: 'flex', gap: 24, willChange: 'transform' }}>
               {EVENTS.map((ev) => (
                 <div key={ev.id} className="event-card-grid"
-                  style={{ flex: '0 0 min(82vw, 760px)', display: 'grid', gridTemplateColumns: '2fr 3fr', background: '#0d0d1c', borderRadius: 16, border: '1px solid rgba(255,255,255,0.07)', overflow: 'hidden', minHeight: 280 }}>
-                  <div style={{ background: '#0a0a14', overflow: 'hidden' }}>
-                    <img src={ev.image} alt={ev.name}
-                      style={{ width: '100%', height: '100%', objectFit: 'cover', display: 'block' }} />
+                  style={{ flex: '0 0 min(82vw, 760px)', display: 'grid', gridTemplateColumns: 'minmax(220px, 2fr) 3fr', background: '#0d0d1c', borderRadius: 16, border: '1px solid rgba(255,255,255,0.07)', overflow: 'hidden', minHeight: 280 }}>
+                  <div className="event-image-frame" style={{ background: '#05050a', overflow: 'hidden', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: 12 }}>
+                    <img className="event-poster-image" src={ev.image} alt={ev.name}
+                      style={{ width: '100%', height: '100%', maxHeight: 'min(56vh, 460px)', objectFit: 'contain', display: 'block' }} />
                   </div>
                   <div style={{ padding: '36px 32px', display: 'flex', flexDirection: 'column', justifyContent: 'center', gap: 14 }}>
                     <span style={{ display: 'inline-block', background: 'rgba(225,29,39,0.1)', color: '#e11d27', border: '1px solid rgba(225,29,39,0.25)', borderRadius: 20, padding: '3px 14px', fontSize: 11, fontFamily: "'Barlow Condensed', sans-serif", fontWeight: 600, letterSpacing: '0.14em', width: 'fit-content' }}>
@@ -597,7 +597,7 @@ function EventsSection() {
         </div>
 
         {/* Timeline */}
-        <div style={{ maxWidth: 1200, margin: '0 auto', padding: '12px 24px 32px', width: '100%', flexShrink: 0 }}>
+        <div className="events-timeline" style={{ maxWidth: 1200, margin: '0 auto', padding: '12px 24px 32px', width: '100%', flexShrink: 0 }}>
           <div style={{ position: 'relative', paddingTop: 24 }}>
             <div style={{ position: 'absolute', top: '50%', left: 0, right: 0, height: 1, background: 'rgba(255,255,255,0.08)', transform: 'translateY(-50%)' }} />
             <div ref={progressBarRef} style={{ position: 'absolute', top: '50%', left: 0, height: 2, background: 'linear-gradient(90deg, #e11d27, #ff4455)', transform: 'translateY(-50%)', width: '0%', boxShadow: '0 0 8px rgba(225,29,39,0.55)' }} />
