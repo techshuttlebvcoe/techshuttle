@@ -15,7 +15,13 @@ import pylaunch from '@/imports/pylaunch.jpg'
 import degubanddare from '@/imports/degubanddare.jpg'
 import techballiye from '@/imports/techballiye.jpg'
 import faculty from '@/imports/faculty.jpg'
-
+import aditi from '@/imports/aditi.jpeg'
+import raunak from '@/imports/raunak.jpeg'
+import deepanshu from '@/imports/deepanshu.jpeg'
+import dhruvsingh from '@/imports/dhruvsingh.jpeg'
+import nihal from '@/imports/nihal.jpeg'
+import abhishek from '@/imports/abhishek.png'
+import vidhushi from '@/imports/vidhushi.jpeg'
 
 // ── Circuit board SVG background ─────────────────────────────────────────────
 
@@ -104,9 +110,16 @@ const DEPT_HEADS: Member[] = [
   { id: 5, name: 'Archit Singh', role: 'Technical Head', image: archit },
   { id: 6, name: 'Akshat Verma', role: 'Technical Head', image: akshat },
   { id: 7, name: 'Dhruv Sharma', role: 'Social Media Head', image: dhruv },
-  { id: 8, name: 'Vaishnavi Vashisth', role: 'Content & Documentation Head', image: vaishnavi },
-  { id: 9, name: 'Deepika', role: 'Content & Documentation Head', image: deepika },
-  { id: 10, name: 'Prabhav Sharma', role: 'Design Head', image: prabhav },
+  { id: 8, name: 'Nihal', role: 'Social Media Head', image: nihal },
+  { id: 9, name: 'Vaishnavi Vashisth', role: 'Content & Documentation Head', image: vaishnavi },
+  { id: 10, name: 'Deepika', role: 'Content & Documentation Head', image: deepika },
+  { id: 11, name: 'Prabhav Sharma', role: 'Design Head', image: prabhav },
+  { id: 12, name: 'Aditi Pandey', role: 'Design Head', image: aditi },
+  { id: 13, name: 'Raunak Singh', role: 'Outreach and Partnership Head', image: raunak },
+  { id: 14, name: 'Vidhushi Gupta', role: 'Outreach and Partnership Head', image: vidhushi },
+  { id: 15, name: 'Deepanshu Singh', role: 'Operations Head', image: deepanshu },
+  { id: 16, name: 'Dhruv Singh', role: 'Operations Head', image: dhruvsingh },
+  { id: 17, name: 'Abhishek Sharma', role: 'Operations Head', image: abhishek },
 ]
 
 // ── Shared UI atoms ───────────────────────────────────────────────────────────
@@ -442,7 +455,7 @@ function AboutSection() {
   const stats = [
     { value: '400+', label: 'Members', sub: 'Active students across all years' },
     { value: '30+', label: 'Events', sub: 'Hackathons, talks & workshops' },
-    { value: '5', label: 'Departments', sub: 'Technical, Design, Event Management & more' },
+    { value: '6', label: 'Departments', sub: 'Technical, Design, Op & more' },
     { value: '2022', label: 'Founded', sub: 'Four years of innovation' },
   ]
 
