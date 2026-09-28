@@ -139,7 +139,7 @@ const DEPT_GROUPS: { title: string; members: Member[] }[] = [
     title: 'Outreach and Partnership',
     members: [
       { id: 13, name: 'Raunak Singh', role: 'Outreach and Partnership Head', image: raunak },
-      { id: 14, name: 'Vidhushi Gupta', role: 'Outreach and Partnership Head', image: vidhushi },
+      { id: 14, name: 'Vidushi Gupta', role: 'Outreach and Partnership Head', image: vidhushi },
     ],
   },
   {
