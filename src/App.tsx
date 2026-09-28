@@ -106,20 +106,50 @@ const CORE_TEAM: Member[] = [
   { id: 4, name: 'Ipshita Porav', role: 'Treasurer', image: ipshita },
 ]
 
-const DEPT_HEADS: Member[] = [
-  { id: 5, name: 'Archit Singh', role: 'Technical Head', image: archit },
-  { id: 6, name: 'Akshat Verma', role: 'Technical Head', image: akshat },
-  { id: 7, name: 'Dhruv Sharma', role: 'Social Media Head', image: dhruv },
-  { id: 8, name: 'Nihal', role: 'Social Media Head', image: nihal },
-  { id: 9, name: 'Vaishnavi Vashisth', role: 'Content & Documentation Head', image: vaishnavi },
-  { id: 10, name: 'Deepika', role: 'Content & Documentation Head', image: deepika },
-  { id: 11, name: 'Prabhav Sharma', role: 'Design Head', image: prabhav },
-  { id: 12, name: 'Aditi Pandey', role: 'Design Head', image: aditi },
-  { id: 13, name: 'Raunak Singh', role: 'Outreach and Partnership Head', image: raunak },
-  { id: 14, name: 'Vidhushi Gupta', role: 'Outreach and Partnership Head', image: vidhushi },
-  { id: 15, name: 'Deepanshu Singh', role: 'Operations Head', image: deepanshu },
-  { id: 16, name: 'Dhruv Singh', role: 'Operations Head', image: dhruvsingh },
-  { id: 17, name: 'Abhishek Sharma', role: 'Operations Head', image: abhishek },
+const DEPT_GROUPS: { title: string; members: Member[] }[] = [
+  {
+    title: 'Technical',
+    members: [
+      { id: 5, name: 'Archit Singh', role: 'Technical Head', image: archit },
+      { id: 6, name: 'Akshat Verma', role: 'Technical Head', image: akshat },
+    ],
+  },
+  {
+    title: 'Social Media',
+    members: [
+      { id: 7, name: 'Dhruv Sharma', role: 'Social Media Head', image: dhruv },
+      { id: 8, name: 'Nihal', role: 'Social Media Head', image: nihal },
+    ],
+  },
+  {
+    title: 'Content & Documentation',
+    members: [
+      { id: 9, name: 'Vaishnavi Vashisth', role: 'Content & Documentation Head', image: vaishnavi },
+      { id: 10, name: 'Deepika', role: 'Content & Documentation Head', image: deepika },
+    ],
+  },
+  {
+    title: 'Design',
+    members: [
+      { id: 11, name: 'Prabhav Sharma', role: 'Design Head', image: prabhav },
+      { id: 12, name: 'Aditi Pandey', role: 'Design Head', image: aditi },
+    ],
+  },
+  {
+    title: 'Outreach and Partnership',
+    members: [
+      { id: 13, name: 'Raunak Singh', role: 'Outreach and Partnership Head', image: raunak },
+      { id: 14, name: 'Vidhushi Gupta', role: 'Outreach and Partnership Head', image: vidhushi },
+    ],
+  },
+  {
+    title: 'Operations',
+    members: [
+      { id: 15, name: 'Deepanshu Singh', role: 'Operations Head', image: deepanshu },
+      { id: 16, name: 'Dhruv Singh', role: 'Operations Head', image: dhruvsingh },
+      { id: 17, name: 'Abhishek Sharma', role: 'Operations Head', image: abhishek },
+    ],
+  },
 ]
 
 // ── Shared UI atoms ───────────────────────────────────────────────────────────
@@ -455,7 +485,7 @@ function AboutSection() {
   const stats = [
     { value: '400+', label: 'Members', sub: 'Active students across all years' },
     { value: '30+', label: 'Events', sub: 'Hackathons, talks & workshops' },
-    { value: '6', label: 'Departments', sub: 'Technical, Design, Op & more' },
+    { value: '6', label: 'Departments', sub: 'Technical, Design, Operational & more' },
     { value: '2022', label: 'Founded', sub: 'Four years of innovation' },
   ]
 
@@ -660,6 +690,52 @@ function TeamGroup({ title, members, centered = false }: { title: string; member
   )
 }
 
+function DeptSubGroup({ title, members }: { title: string; members: Member[] }) {
+  const [subRef, subVisible] = useReveal<HTMLDivElement>()
+
+  return (
+    <div ref={subRef} style={{ marginTop: 48 }}>
+      <div className={`reveal${subVisible ? ' in' : ''}`}
+        style={{ display: 'flex', alignItems: 'center', gap: 12, marginBottom: 24 }}>
+        <span style={{ width: 28, height: 2, background: '#e11d27', borderRadius: 2, flexShrink: 0 }} />
+        <h4 style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(19px, 2.2vw, 24px)', fontWeight: 700, color: 'rgba(240,240,245,0.92)', letterSpacing: '0.06em', margin: 0, textTransform: 'uppercase' }}>
+          {title}
+        </h4>
+      </div>
+      <div
+        className="dept-grid"
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 280px))',
+          gap: 24,
+          justifyContent: 'center',
+        }}>
+        {members.map((member, i) => (
+          <div key={member.id} className={`reveal-scale d${Math.min(i + 1, 5)}${subVisible ? ' in' : ''}`}>
+            <MemberCard member={member} />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
+
+function DepartmentHeadsGroup() {
+  const [headRef, headVisible] = useReveal<HTMLDivElement>()
+
+  return (
+    <div ref={headRef} style={{ marginTop: 64 }}>
+      <h3 className={`reveal${headVisible ? ' in' : ''}`}
+        style={{ fontFamily: "'Barlow Condensed', sans-serif", fontSize: 'clamp(26px, 3vw, 34px)', fontWeight: 800, color: '#ffffff', letterSpacing: '0.04em', margin: '0 0 8px', textAlign: 'left', textTransform: 'uppercase' }}>
+        Department Heads
+      </h3>
+      {DEPT_GROUPS.map((group) => (
+        <DeptSubGroup key={group.title} title={group.title} members={group.members} />
+      ))}
+    </div>
+  )
+}
+
 function TeamSection() {
   const [headRef, headVisible] = useReveal()
 
@@ -675,7 +751,7 @@ function TeamSection() {
 
       <TeamGroup title="Faculty Head" members={[FACULTY_HEAD]} centered />
       <TeamGroup title="Core Members" members={CORE_TEAM} />
-      <TeamGroup title="Department Heads" members={DEPT_HEADS} />
+      <DepartmentHeadsGroup />
     </section>
   )
 }
